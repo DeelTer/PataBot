@@ -7,16 +7,12 @@ import ru.deelter.patabot.console.ConsoleManager;
 
 import java.util.*;
 
-public class ConsoleCommandManager {
+public class CommandManager {
 
-    private static final Map<String, ConsoleCommand> COMMAND_MAP = new HashMap<>();
+    private static final Map<String, Command> COMMAND_MAP = new HashMap<>();
 
-    public static void setupCommands() {
-        //TODO COMMANDS
-    }
-
-    public static void register(@NotNull String id, @NotNull ConsoleCommand command) {
-        COMMAND_MAP.put(id, command);
+    public static void register(@NotNull String id, @NotNull Command command) {
+        COMMAND_MAP.put(id.toUpperCase(), command);
     }
 
     public static void unregister(@NotNull String id) {
@@ -24,7 +20,7 @@ public class ConsoleCommandManager {
     }
 
     @Nullable
-    public static ConsoleCommand getCommand(@NotNull String commandId) {
+    public static Command getCommand(@NotNull String commandId) {
         return COMMAND_MAP.get(commandId);
     }
 
@@ -32,9 +28,12 @@ public class ConsoleCommandManager {
         Thread threadCommand = new Thread(() -> {
             while(true) {
                 String line = ConsoleManager.getLineReader().readLine("> ");
+                if (line.length() < 1) continue;
 
                 String[] args = line.split(" ");
-                ConsoleCommand command = ConsoleCommandManager.getCommand(args[0].toUpperCase());
+                if (args.length < 1) continue;
+
+                Command command = CommandManager.getCommand(args[0].toUpperCase());
                 if (command == null) {
                     ConsoleLogger.warn("Command not exists");
                     continue;

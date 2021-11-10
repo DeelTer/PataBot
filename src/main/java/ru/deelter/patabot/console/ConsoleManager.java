@@ -4,7 +4,7 @@ import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
-import ru.deelter.patabot.console.commands.ConsoleCommandManager;
+import ru.deelter.patabot.console.commands.CommandManager;
 
 import java.io.IOException;
 
@@ -15,8 +15,7 @@ public class ConsoleManager {
 
     public static void setupConsole() {
         setupLineReader();
-        ConsoleCommandManager.runCommandProcessor();
-        ConsoleCommandManager.setupCommands();
+        CommandManager.runCommandProcessor();
     }
 
     public static void setupLineReader() {
