@@ -12,8 +12,10 @@ import java.io.Reader;
 
 public class Config {
 
-    private static String BOT_TOKEN;
-    private static String GUILD_ID;
+    public static String BOT_TOKEN;
+    public static String BOT_ACTIVITY;
+
+    public static String GUILD_ID;
 
     public static void setup() {
         File configFile = getConfigFile();
@@ -28,6 +30,7 @@ public class Config {
         JsonObject parser = JsonParser.parseReader(reader).getAsJsonObject();
         BOT_TOKEN = parser.get("token").getAsString();
         GUILD_ID = parser.get("guild-id").getAsString();
+        BOT_ACTIVITY = parser.get("activity").getAsString();
     }
 
     public static void reload() {
@@ -37,13 +40,5 @@ public class Config {
 
     private static File getConfigFile() {
         return new File(PathManager.getDataFolder() + File.separator + "config.json");
-    }
-
-    public static String getBotToken() {
-        return BOT_TOKEN;
-    }
-
-    public static String getGuildId() {
-        return GUILD_ID;
     }
 }
