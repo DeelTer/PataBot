@@ -8,7 +8,7 @@ public class DirectoryManager {
 
     @NotNull
     public static File createDirectory(@NotNull String dirName) {
-        File directory = new File(PathManager.getMainPath() + File.separator + dirName);
+        File directory = new File(PathManager.getMainPathFile() + File.separator + dirName);
         if (!directory.exists()) directory.mkdir();
         return directory;
     }

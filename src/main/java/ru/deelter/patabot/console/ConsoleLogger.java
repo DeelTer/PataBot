@@ -1,6 +1,6 @@
 package ru.deelter.patabot.console;
 
-public class ConsoleNotify {
+public class ConsoleLogger {
 
     private static boolean debug = true;
 

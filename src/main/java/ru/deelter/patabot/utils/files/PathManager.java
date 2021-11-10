@@ -1,14 +1,12 @@
 package ru.deelter.patabot.utils.files;
 
-import ru.deelter.patabot.PataBot;
+import ru.deelter.patabot.console.ConsoleLogger;
 
 import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 public class PathManager {
 
-    private static String resourcePath;
+    private static String mainPath;
 
     public static void setupPaths() {
         setupMainPath(); // Main directory
@@ -16,19 +14,15 @@ public class PathManager {
     }
 
     public static void setupMainPath() {
-        URI uri = null;
-        try {
-            uri = PataBot.class.getProtectionDomain().getCodeSource().getLocation().toURI();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        if (uri == null) throw new RuntimeException("URI is null");
-
-        resourcePath = new File(uri).getParent();
-        System.out.println("Load main path: " + resourcePath); // DEBUG
+        mainPath = new File(".").getPath();
+        ConsoleLogger.info("Load main path: " + mainPath);
     }
 
-    public static File getMainPath() {
-        return new File(resourcePath);
+    public static File getMainPathFile() {
+        return new File(mainPath);
+    }
+
+    public static String getMainPath() {
+        return mainPath;
     }
 }

@@ -36,6 +36,6 @@ public abstract class Database {
      */
     @NotNull
     public static Database setupDatabase(@NotNull String databaseName) {
-        return new SQLite(databaseName, PathManager.getMainPath());
+        return new SQLite(databaseName, PathManager.getMainPathFile());
     }
 }
