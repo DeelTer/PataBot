@@ -2,7 +2,7 @@ package ru.deelter.patabot.console.commands;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.deelter.patabot.utils.Console;
+import ru.deelter.patabot.console.ConsoleNotify;
 import ru.deelter.patabot.console.ConsoleManager;
 
 import java.util.*;
@@ -36,7 +36,7 @@ public class CommandManager {
                 String[] args = line.split(" ");
                 ConsoleCommand command = CommandManager.getCommand(args[0].toUpperCase());
                 if (command == null) {
-                    Console.warn("Command not exists");
+                    ConsoleNotify.warn("Command not exists");
                     continue;
                 }
 

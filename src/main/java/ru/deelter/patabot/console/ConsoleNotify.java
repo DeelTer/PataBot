@@ -1,9 +1,6 @@
-package ru.deelter.patabot.utils;
+package ru.deelter.patabot.console;
 
-import ru.deelter.patabot.console.ConsoleColors;
-import ru.deelter.patabot.console.ConsoleManager;
-
-public class Console {
+public class ConsoleNotify {
 
     private static boolean debug = true;
 
