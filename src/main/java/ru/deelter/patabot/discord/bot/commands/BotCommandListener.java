@@ -28,6 +28,7 @@ public class BotCommandListener extends ListenerAdapter {
         String label = args[0].toUpperCase();
         BotCommand command = BotCommandManager.getCommand(label);
         if (command == null) return;
+        if (command.needRemoveMessage()) event.getMessage().delete().queue();
 
         MessageChannel channel = event.getChannel();
         if (!command.isValidChannel(channel)) return;
@@ -41,9 +42,5 @@ public class BotCommandListener extends ListenerAdapter {
 
         String[] argsWithoutFirst = argsList.toArray(new String[0]);
         command.execute(user, channel, argsWithoutFirst);
-
-        if (command.needRemoveMessage()) event.getMessage().delete().queue();
-
-        ConsoleLogger.debug(user.getName() + " used server command " + command.getId());
     }
 }

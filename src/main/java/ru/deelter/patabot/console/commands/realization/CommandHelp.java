@@ -15,7 +15,7 @@ public class CommandHelp extends Command {
 
     @Override
     public void execute(String[] args) {
-        StringBuilder sb = new StringBuilder("Commands list:").append("\n");
+        StringBuilder sb = new StringBuilder("\nCommands list:").append("\n");
         for (Command command : CommandManager.getCommandMap().values()) {
             sb.append("| ")
                     .append(command.getId())
