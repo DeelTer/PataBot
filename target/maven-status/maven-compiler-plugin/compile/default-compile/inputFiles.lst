@@ -1,12 +1,11 @@
+D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\console\ConsoleManager.java
 D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\utils\database\SQLite.java
 D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\utils\database\Database.java
-D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\database\DatabaseManager.java
 D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\PataBot.java
 D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\utils\database\MySQL.java
-D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\utils\console\commands\ConsoleCommand.java
 D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\utils\files\DirectoryManager.java
-D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\utils\console\commands\CommandManager.java
-D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\utils\Console.java
-D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\utils\console\ConsoleManager.java
+D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\console\commands\ConsoleCommand.java
+D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\console\ConsoleNotify.java
 D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\utils\files\PathManager.java
-D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\utils\console\ConsoleColors.java
+D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\console\ConsoleColors.java
+D:\Programs\IntelliJ IDEA Community Edition 2020.2.1\IdeaProjects\Discord\PataBot\src\main\java\ru\deelter\patabot\console\commands\CommandManager.java

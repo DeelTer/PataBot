@@ -7,12 +7,12 @@ import ru.deelter.patabot.console.ConsoleManager;
 
 import java.util.*;
 
-public class CommandManager {
+public class ConsoleCommandManager {
 
     private static final Map<String, ConsoleCommand> COMMAND_MAP = new HashMap<>();
 
     public static void setupCommands() {
-        register("TEST", args -> System.out.println("BRUH привет 12345"));
+
     }
 
     public static void register(@NotNull String id, @NotNull ConsoleCommand command) {
@@ -34,7 +34,7 @@ public class CommandManager {
                 String line = ConsoleManager.getLineReader().readLine("> ");
 
                 String[] args = line.split(" ");
-                ConsoleCommand command = CommandManager.getCommand(args[0].toUpperCase());
+                ConsoleCommand command = ConsoleCommandManager.getCommand(args[0].toUpperCase());
                 if (command == null) {
                     ConsoleNotify.warn("Command not exists");
                     continue;

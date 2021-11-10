@@ -57,6 +57,14 @@
         </resources>
     </build>
 
+    <repositories>
+        <!-- Discord repo -->
+        <repository>
+            <id>dv8tion</id>
+            <name>m2-dv8tion</name>
+            <url>https://m2.dv8tion.net/releases</url>
+        </repository>
+    </repositories>
     <dependencies>
         <!-- Database library -->
         <dependency>
@@ -79,6 +87,19 @@
             <groupId>org.jline</groupId>
             <artifactId>jline</artifactId>
             <version>3.21.0</version>
+        </dependency>
+
+        <!-- Discord API -->
+        <dependency>
+            <groupId>net.dv8tion</groupId>
+            <artifactId>JDA</artifactId>
+            <version>4.3.0_346</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>club.minnced</groupId>
+                    <artifactId>opus-java</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>
