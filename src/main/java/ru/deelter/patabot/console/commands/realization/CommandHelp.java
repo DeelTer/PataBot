@@ -15,7 +15,7 @@ public class CommandHelp extends Command {
     public void execute(String[] args) {
         StringBuilder sb = new StringBuilder("Commands list:").append("\n");
         for (Command command : CommandManager.getCommandMap().values()) {
-            sb.append("     ")
+            sb.append("| ")
                     .append(command.getId())
                     .append(" - ")
                     .append(command.getDescription())

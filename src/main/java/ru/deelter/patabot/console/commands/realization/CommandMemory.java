@@ -15,8 +15,9 @@ public class CommandMemory extends Command {
         Runtime runtime = Runtime.getRuntime();
         long freeMem = runtime.freeMemory() / 1024 / 1024;
         long totalMem = runtime.totalMemory() / 1024 / 1024;
+        long usedMem = totalMem - freeMem;
 
-        String statistic =  "RAM statistic: [" + freeMem + "M/" + totalMem + "M]";
+        String statistic =  "RAM statistic: [" + usedMem + "M/" + totalMem + "M]";
         ConsoleLogger.info(statistic);
     }
 }
