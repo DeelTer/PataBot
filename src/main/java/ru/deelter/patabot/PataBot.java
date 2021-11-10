@@ -3,7 +3,9 @@ package ru.deelter.patabot;
 import ru.deelter.patabot.console.ConsoleLogger;
 import ru.deelter.patabot.console.ConsoleManager;
 import ru.deelter.patabot.console.commands.CommandManager;
-import ru.deelter.patabot.utils.Color;
+import ru.deelter.patabot.console.commands.realization.CommandConfigReload;
+import ru.deelter.patabot.console.commands.realization.CommandHelp;
+import ru.deelter.patabot.console.commands.realization.CommandMemory;
 import ru.deelter.patabot.utils.files.ResourceManager;
 
 public class PataBot {
@@ -19,14 +21,8 @@ public class PataBot {
     }
 
     private static void setupCommands() {
-        CommandManager.register("TEST", args -> ConsoleLogger.info(Color.RED + "Command test!"));
-        CommandManager.register("RELOAD", args -> Config.reload()); // Config reload command
-
-        CommandManager.register("RAM", args -> {
-            Runtime runtime = Runtime.getRuntime();
-            long freeMem = runtime.freeMemory() / 1024 / 1024;
-            long totalMem = runtime.totalMemory() / 1024 / 1024;
-            ConsoleLogger.info("RAM statistic: [" + freeMem + "/" + totalMem + "]");
-        }); // Check RAM command
+        CommandManager.register(new CommandConfigReload("reloadConfig"));
+        CommandManager.register(new CommandMemory("mem"));
+        CommandManager.register(new CommandHelp("help"));
     }
 }

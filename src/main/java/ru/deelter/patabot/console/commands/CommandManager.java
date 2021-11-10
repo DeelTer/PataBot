@@ -11,8 +11,12 @@ public class CommandManager {
 
     private static final Map<String, Command> COMMAND_MAP = new HashMap<>();
 
-    public static void register(@NotNull String id, @NotNull Command command) {
-        COMMAND_MAP.put(id.toUpperCase(), command);
+    public static Map<String, Command> getCommandMap() {
+        return COMMAND_MAP;
+    }
+
+    public static void register(@NotNull Command command) {
+        COMMAND_MAP.put(command.getId(), command);
     }
 
     public static void unregister(@NotNull String id) {
