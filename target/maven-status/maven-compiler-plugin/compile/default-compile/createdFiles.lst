@@ -1,0 +1,12 @@
+ru\deelter\patabot\utils\console\ConsoleColors.class
+ru\deelter\patabot\utils\database\SQLite.class
+ru\deelter\patabot\utils\console\ConsoleManager.class
+ru\deelter\patabot\utils\files\DirectoryManager.class
+ru\deelter\patabot\utils\console\commands\ConsoleCommand.class
+ru\deelter\patabot\utils\console\commands\CommandManager.class
+ru\deelter\patabot\utils\Console.class
+ru\deelter\patabot\utils\database\MySQL.class
+ru\deelter\patabot\utils\database\Database.class
+ru\deelter\patabot\database\DatabaseManager.class
+ru\deelter\patabot\utils\files\PathManager.class
+ru\deelter\patabot\PataBot.class
