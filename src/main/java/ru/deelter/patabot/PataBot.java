@@ -6,6 +6,8 @@ import ru.deelter.patabot.console.commands.CommandManager;
 import ru.deelter.patabot.console.commands.realization.CommandConfigReload;
 import ru.deelter.patabot.console.commands.realization.CommandHelp;
 import ru.deelter.patabot.console.commands.realization.CommandMemory;
+import ru.deelter.patabot.discord.bot.DiscordBot;
+import ru.deelter.patabot.discord.users.money.CoinsDatabase;
 import ru.deelter.patabot.utils.files.ResourceManager;
 
 public class PataBot {
@@ -16,6 +18,9 @@ public class PataBot {
 
         ResourceManager.saveResource("config.json", false);
         Config.setup();
+
+        DiscordBot.enable();
+        CoinsDatabase.setupTables();
 
         ConsoleLogger.info("Successfully loaded!");
     }
