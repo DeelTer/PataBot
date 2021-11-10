@@ -8,16 +8,12 @@ import ru.deelter.patabot.utils.files.ResourceManager;
 public class PataBot {
 
     public static void main(String[] args) {
-        ResourceManager.saveDefaultFiles();
         ConsoleManager.setupConsole();
-        setupModules();
+
+        PathManager.setupPaths();
+       // ResourceManager.saveDefaultFiles();
         Config.setup();
 
         ConsoleLogger.info("Successfully loaded!");
-    }
-
-    public static void setupModules() {
-        PathManager.setupPaths();
-        ConsoleLogger.info("All modules loaded!");
     }
 }

@@ -2,6 +2,7 @@ package ru.deelter.patabot;
 
 import ru.deelter.patabot.console.ConsoleLogger;
 import ru.deelter.patabot.utils.files.PathManager;
+import ru.deelter.patabot.utils.files.ResourceManager;
 
 import java.io.File;
 
@@ -11,7 +12,6 @@ public class Config {
 
     public static void setup() {
         File configFile = getConfigFile();
-        System.out.println(configFile.isFile());
     }
 
     public static void reload() {
@@ -20,6 +20,6 @@ public class Config {
     }
 
     private static File getConfigFile() {
-        return new File(PathManager.getMainPathFile() + "config.json");
+        return ResourceManager.getFile("config.json");
     }
 }
