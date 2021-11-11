@@ -25,7 +25,7 @@ public class CommandHelp extends Command {
         }
         sb.append("\nBot commands list:").append("\n");
         for (BotCommand command : BotCommandManager.getCommandMap().values()) {
-            sb.append("| ").append(command.getId()).append(",");
+            sb.append("| ").append(command.getId()).append("\n");
         }
 
         ConsoleLogger.info(sb.toString());

@@ -4,10 +4,10 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
-import ru.deelter.patabot.console.ConsoleLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class BotCommandListener extends ListenerAdapter {
         String label = args[0].toUpperCase();
         BotCommand command = BotCommandManager.getCommand(label);
         if (command == null) return;
-        if (command.needRemoveMessage()) event.getMessage().delete().queue();
+        if (command.needDeleteMessage()) event.getMessage().delete().queue();
 
         MessageChannel channel = event.getChannel();
         if (!command.isValidChannel(channel)) return;
@@ -42,5 +42,11 @@ public class BotCommandListener extends ListenerAdapter {
 
         String[] argsWithoutFirst = argsList.toArray(new String[0]);
         command.execute(user, channel, argsWithoutFirst);
+    }
+
+    @Override
+    public void onSlashCommand(SlashCommandEvent event) {
+        if (!event.getName().equals("hello")) return; // make sure we handle the right command
+        event.reply("Гандон пошол нахуй.....").setEphemeral(true).queue(); // Queue both reply and edit
     }
 }

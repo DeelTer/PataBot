@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.entities.User;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +15,9 @@ public abstract class BotCommand {
 
     private final String id;
     private boolean adminOnly = false;
-    private boolean needRemoveMessage = true;
+    private boolean needDeleteMessage = true;
+
+    private int answerDeleteSeconds = -1;
 
     public BotCommand(@NotNull String id) {
         this.id = id.toUpperCase();
@@ -36,8 +39,8 @@ public abstract class BotCommand {
         return channels;
     }
 
-    public BotCommand channel(@NotNull String channelId) {
-        channels.add(channelId);
+    public BotCommand enableChanel(@NotNull String...channelIds) {
+        channels.addAll(Arrays.asList(channelIds));
         return this;
     }
 
@@ -45,20 +48,29 @@ public abstract class BotCommand {
         return channels.isEmpty() || channels.contains(channel.getId());
     }
 
-    public boolean needRemoveMessage() {
-        return needRemoveMessage;
+    public boolean needDeleteMessage() {
+        return needDeleteMessage;
     }
 
-    public BotCommand removeMessage(boolean needRemoveMessage) {
-        this.needRemoveMessage = needRemoveMessage;
+    public BotCommand deleteUserMessage(boolean needDeleteMessage) {
+        this.needDeleteMessage = needDeleteMessage;
         return this;
     }
 
-    protected abstract void execute(@NotNull User user, @NotNull MessageChannel channel, @NotNull String[] args);
-
-    public void register() {
-        BotCommandManager.register(this);
+    public BotCommand deleteAnswerAfter(int answerDeleteSeconds) {
+        this.answerDeleteSeconds = answerDeleteSeconds;
+        return this;
     }
+
+    public boolean needDeleteAnswer() {
+        return answerDeleteSeconds > 0;
+    }
+
+    public int getAnswerDeleteSeconds() {
+        return answerDeleteSeconds;
+    }
+
+    protected abstract void execute(@NotNull User user, @NotNull MessageChannel channel, @NotNull String[] args);
 
     @Override
     public boolean equals(Object o) {
@@ -70,7 +82,7 @@ public abstract class BotCommand {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, adminOnly);
+        return Objects.hash(id);
     }
 
     @Override
