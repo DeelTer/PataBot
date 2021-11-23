@@ -3,9 +3,8 @@ package ru.deelter.patabot.console.commands.realization;
 import org.jetbrains.annotations.NotNull;
 import ru.deelter.patabot.console.ConsoleLogger;
 import ru.deelter.patabot.console.commands.Command;
-import ru.deelter.patabot.console.commands.CommandManager;
-import ru.deelter.patabot.discord.bot.commands.BotCommand;
-import ru.deelter.patabot.discord.bot.commands.BotCommandManager;
+import ru.deelter.patabot.discord.bot.commands.utils.AbstractCommand;
+import ru.deelter.patabot.discord.bot.commands.CommandManager;
 
 public class CommandHelp extends Command {
 
@@ -16,7 +15,7 @@ public class CommandHelp extends Command {
     @Override
     public void execute(String[] args) {
         StringBuilder sb = new StringBuilder("\nCommands list:").append("\n");
-        for (Command command : CommandManager.getCommandMap().values()) {
+        for (Command command : ru.deelter.patabot.console.commands.CommandManager.getCommandMap().values()) {
             sb.append("| ")
                     .append(command.getId())
                     .append(" - ")
@@ -24,7 +23,7 @@ public class CommandHelp extends Command {
                     .append("\n");
         }
         sb.append("\nBot commands list:").append("\n");
-        for (BotCommand command : BotCommandManager.getCommandMap().values()) {
+        for (AbstractCommand command : CommandManager.getCommandMap().values()) {
             sb.append("| ").append(command.getId()).append("\n");
         }
 

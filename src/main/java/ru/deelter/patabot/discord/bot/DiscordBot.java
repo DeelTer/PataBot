@@ -8,12 +8,14 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import org.jetbrains.annotations.NotNull;
 import ru.deelter.patabot.Config;
-import ru.deelter.patabot.discord.bot.commands.BotCommandListener;
-import ru.deelter.patabot.discord.bot.commands.BotCommandManager;
+import ru.deelter.patabot.discord.bot.commands.CommandManager;
+import ru.deelter.patabot.discord.bot.commands.CommandsAuth;
 
 import javax.security.auth.login.LoginException;
 
 public class DiscordBot {
+
+    private static final String PREFIX = "#";
 
     private static JDA jda;
     private static Guild guild;
@@ -21,8 +23,8 @@ public class DiscordBot {
     public static void enable() {
         setupJDA();
         guild = jda.getGuildById(Config.GUILD_ID);
-        BotCommandManager.setupCommands();
 
+        CommandManager.setupCommands();
         jda.upsertCommand("hello", "bruh").queue(); // This can take up to 1 hour to show up in the client
     }
 
@@ -30,7 +32,7 @@ public class DiscordBot {
         JDABuilder builder = JDABuilder.createDefault(Config.BOT_TOKEN)
                 .setMemberCachePolicy(MemberCachePolicy.ALL)
                 .setActivity(Activity.watching(Config.BOT_ACTIVITY))
-                .addEventListeners(new BotCommandListener())
+                .addEventListeners(new CommandsAuth())
                 .setEnabledIntents(GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS));
         try {
             jda = builder.build();
@@ -48,5 +50,9 @@ public class DiscordBot {
     @NotNull
     public static Guild getGuild() {
         return guild;
+    }
+
+    public static String getPrefix() {
+        return PREFIX;
     }
 }

@@ -1,7 +1,6 @@
 package ru.deelter.patabot.discord.users.money;
 
 import org.jetbrains.annotations.NotNull;
-import ru.deelter.patabot.PataBot;
 import ru.deelter.patabot.utils.database.Database;
 
 import java.sql.Connection;
@@ -25,28 +24,24 @@ public class CoinsDatabase {
         }
     }
 
-    public static void setCoins(@NotNull String id, int coins) {
-        synchronized (PataBot.class) {
-            String sql = "INSERT OR REPLACE INTO " + COINS_TABLE + "(ID,COUNT) VALUES(?,?);";
-            try (Connection con = DATABASE.openConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-                ps.setString(1, id);
-                ps.setInt(2, coins);
-                ps.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+    public synchronized static void setCoins(@NotNull String id, int coins) {
+        String sql = "INSERT OR REPLACE INTO " + COINS_TABLE + "(ID,COUNT) VALUES(?,?);";
+        try (Connection con = DATABASE.openConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, id);
+            ps.setInt(2, coins);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
-    public static int getCoins(@NotNull String id) {
-        synchronized (PataBot.class) {
-            String sql = "SELECT * FROM " + COINS_TABLE + " WHERE ID = '" + id + "';";
-            try (Connection con = DATABASE.openConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) return rs.getInt("COUNT");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+    public synchronized static int getCoins(@NotNull String id) {
+        String sql = "SELECT * FROM " + COINS_TABLE + " WHERE ID = '" + id + "';";
+        try (Connection con = DATABASE.openConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) return rs.getInt("COUNT");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return 0;
     }
